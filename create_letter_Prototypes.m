@@ -1,0 +1,25 @@
+
+
+[a,minVector]=RecognizeCharacters('l-s.jpg');
+
+
+
+image = imread('l-s.jpg');
+originalImage = image;
+%image =  double(image);
+image = rgb2gray(image);
+image(image < 128) = 1;
+image(image >= 128) = 0; % Pay attention to the order
+image = logical(image); 
+[row,col] = size(minVector);
+LetterCoords = [];
+imshow(originalImage);
+dots = [];
+
+% all non two part character label
+for d=1:1:row
+    %break and imwrite(tempImage, 'z-l.jpg')
+    tempImage=originalImage(minVector(d,1):minVector(d,3),minVector(d,2):minVector(d,4),:);
+        imshow(tempImage);  
+        
+end
